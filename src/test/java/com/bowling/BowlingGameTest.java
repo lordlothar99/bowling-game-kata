@@ -53,7 +53,7 @@ public class BowlingGameTest {
 
         bowlingGame.roll(6);
 
-        assertThat(bowlingGame.isSpare()).isEqualTo(true);
+        assertThat(bowlingGame.isSpare()).isTrue();
     }
 
     @Test
@@ -70,7 +70,7 @@ public class BowlingGameTest {
     public void should_be_a_strike_when_10_pins_down_in_same_frame_with_one_rolls() {
         bowlingGame.roll(10);
 
-        assertThat(bowlingGame.isStrike()).isEqualTo(true);
+        assertThat(bowlingGame.isStrike()).isTrue();
     }
 
     @Test
@@ -100,6 +100,6 @@ public class BowlingGameTest {
         });
 
         assertThat(bowlingGame.framesCount()).isEqualTo(10);
-        assertThat(bowlingGame.isFinished()).isEqualTo(true);
+        assertThat(bowlingGame.isFinished()).isTrue();
     }
 }

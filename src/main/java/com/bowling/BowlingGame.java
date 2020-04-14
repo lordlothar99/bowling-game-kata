@@ -6,6 +6,7 @@ import java.util.List;
 public class BowlingGame {
 
     public static final int MAX_PINS_PER_ROLL = 10;
+    public static final int MAX_FRAMES_COUNT = 10;
     private Frame currentFrame;
     private Frame firstFrame;
     private int framesCount = 1;
@@ -43,6 +44,6 @@ public class BowlingGame {
     }
 
     public boolean isFinished() {
-        return framesCount == 10 && currentFrame.isFinished();
+        return framesCount == MAX_FRAMES_COUNT && currentFrame.isFinished();
     }
 }
