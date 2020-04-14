@@ -32,4 +32,14 @@ public class BowlingGameTest {
     public void should_raise_an_error_when_cheater_player_hits_more_than_10_pins() {
         bowlingGame.roll(11);
     }
+
+    @Test(expected = RuntimeException.class)
+    public void should_player_have_maximum_two_rolls_per_frame() {
+        bowlingGame.roll(4);
+        bowlingGame.roll(4);
+
+        bowlingGame.roll(4);
+
+        assertThat(bowlingGame.framesCount()).isEqualTo(2);
+    }
 }
