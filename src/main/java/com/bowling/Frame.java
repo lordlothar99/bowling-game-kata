@@ -8,7 +8,7 @@ import static java.util.Arrays.stream;
 public class Frame {
     private static final int MAX_ROLLS_PER_FRAME = 2;
 
-    private int[] pinsDown;
+    protected int[] pinsDown;
     protected int rollCount = 0;
     private Frame nextFrame;
 
@@ -56,7 +56,7 @@ public class Frame {
         return nextFrame != null;
     }
 
-    private int innerScore() {
+    protected int innerScore() {
         return stream(pinsDown).sum();
     }
 
