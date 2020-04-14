@@ -12,4 +12,13 @@ public class BowlingGameTest {
 
         assertThat(bowlingGame.score()).isEqualTo(0);
     }
+
+    @Test
+    public void should_score_equal_number_of_pins_down_when_player_hits_pins() {
+        BowlingGame bowlingGame = new BowlingGame();
+
+        bowlingGame.roll(4);
+
+        assertThat(bowlingGame.score()).isEqualTo(4);
+    }
 }
