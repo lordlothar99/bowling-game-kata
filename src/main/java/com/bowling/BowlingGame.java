@@ -41,4 +41,8 @@ public class BowlingGame {
     public boolean isStrike() {
         return currentFrame.isStrike();
     }
+
+    public boolean isFinished() {
+        return framesCount == 10 && currentFrame.isFinished();
+    }
 }
