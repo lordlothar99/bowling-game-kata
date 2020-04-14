@@ -31,11 +31,13 @@ public class Frame {
 
     public int score() {
         int score = innerScore();
-        if (isSpare() && nextFrame != null) {
-            score += nextFrame.pinsDown[0];
-        }
-        if (isStrike() && nextFrame != null) {
-            score += nextFrame.innerScore();
+        if (nextFrame != null) {
+            if (isSpare()) {
+                score += nextFrame.pinsDown[0];
+            }
+            if (isStrike()) {
+                score += nextFrame.innerScore();
+            }
         }
         return score;
     }
