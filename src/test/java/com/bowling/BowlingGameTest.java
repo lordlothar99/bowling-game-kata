@@ -1,7 +1,11 @@
 package com.bowling;
 
+import org.assertj.core.util.Streams;
 import org.junit.Test;
 
+import java.util.stream.Stream;
+
+import static java.util.stream.Stream.iterate;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class BowlingGameTest {
@@ -86,5 +90,16 @@ public class BowlingGameTest {
         bowlingGame.roll(3);
 
         assertThat(bowlingGame.score()).isEqualTo(28);
+    }
+
+    @Test
+    public void should_game_be_finished_when_there_are_10_frames() {
+        iterate(0, i->i).limit(10).forEach(i -> {
+            bowlingGame.roll(3);
+            bowlingGame.roll(3);
+        });
+
+        assertThat(bowlingGame.framesCount()).isEqualTo(10);
+        assertThat(bowlingGame.isFinished()).isEqualTo(true);
     }
 }
