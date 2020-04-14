@@ -11,6 +11,7 @@ public class Frame {
 
     Frame() {
     }
+
     Frame(Frame previousFrame) {
         previousFrame.nextFrame = this;
     }
@@ -20,12 +21,24 @@ public class Frame {
         rollCount++;
     }
 
+    public int totalScore() {
+        int totalScore = score();
+        if (nextFrame != null) {
+            totalScore += nextFrame.totalScore();
+        }
+        return totalScore;
+    }
+
     public int score() {
-        int score = pinsDown[0] + pinsDown[1];
+        int score = innerScore();
         if (isSpare() && nextFrame != null) {
             score += nextFrame.pinsDown[0];
         }
         return score;
+    }
+
+    private int innerScore() {
+        return pinsDown[0] + pinsDown[1];
     }
 
     public boolean isFinished() {
@@ -33,14 +46,6 @@ public class Frame {
     }
 
     public boolean isSpare() {
-        return pinsDown[0] + pinsDown[1] == MAX_PINS_PER_ROLL;
-    }
-
-    public int totalScore() {
-        int totalScore = score();
-        if (nextFrame != null) {
-            totalScore +=nextFrame.totalScore();
-        }
-        return totalScore;
+        return innerScore() == MAX_PINS_PER_ROLL;
     }
 }
