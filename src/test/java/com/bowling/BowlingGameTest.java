@@ -140,4 +140,13 @@ public class BowlingGameTest {
 
         assertThat(bowlingGame.score()).isEqualTo(19);
     }
+
+    @Test
+    public void should_max_score_be_300_when_player_does_only_strikes() {
+        iterate(0, i -> i).limit(12).forEach(i -> {
+            bowlingGame.roll(10);
+        });
+
+        assertThat(bowlingGame.score()).isEqualTo(300);
+    }
 }
