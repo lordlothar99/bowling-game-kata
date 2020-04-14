@@ -33,6 +33,7 @@ public class BowlingGameTest {
         bowlingGame.roll(11);
     }
 
+    @Test
     public void should_player_have_maximum_two_rolls_per_frame() {
         bowlingGame.roll(4);
         bowlingGame.roll(4);
