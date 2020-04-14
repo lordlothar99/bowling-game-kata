@@ -42,4 +42,13 @@ public class BowlingGameTest {
 
         assertThat(bowlingGame.framesCount()).isEqualTo(2);
     }
+
+    @Test
+    public void should_be_a_spare_when_10_pins_down_in_same_frame_with_two_rolls() {
+        bowlingGame.roll(4);
+
+        bowlingGame.roll(6);
+
+        assertThat(bowlingGame.isSpare()).isEqualTo(true);
+    }
 }
