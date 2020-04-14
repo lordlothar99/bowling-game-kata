@@ -79,11 +79,11 @@ public class Frame {
     }
 
     protected int maxRolls() {
-        return 2;
+        return MAX_ROLLS_PER_FRAME;
     }
 
     public boolean isSpare() {
-        return innerScore() == MAX_PINS_PER_ROLL && rollCount == 2;
+        return innerScore() == MAX_PINS_PER_ROLL && rollCount == MAX_ROLLS_PER_FRAME;
     }
 
     public boolean isStrike() {
