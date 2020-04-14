@@ -6,35 +6,35 @@ import java.util.List;
 public class BowlingGame {
 
     public static final int MAX_PINS_PER_ROLL = 10;
-    private List<Frame> frames = new ArrayList<>();
+    private Frame currentFrame;
+    private Frame firstFrame;
+    private int framesCount = 1;
 
     public BowlingGame() {
-        frames.add(new Frame());
+        firstFrame = new Frame();
+        currentFrame = firstFrame;
     }
 
     public void roll(int pins) {
         if (pins > MAX_PINS_PER_ROLL) {
             throw new RuntimeException("There are only 10 pins, cheater !");
         }
-        if (currentFrame().isFinished()) {
-            frames.add(new Frame());
+        if (currentFrame.isFinished()) {
+            currentFrame = new Frame(currentFrame);
+            framesCount++;
         }
-        currentFrame().roll(pins);
-    }
-
-    private Frame currentFrame() {
-        return frames.get(frames.size() - 1);
+        currentFrame.roll(pins);
     }
 
     public int score() {
-        return frames.stream().mapToInt(Frame::score).sum();
+        return firstFrame.totalScore();
     }
 
     public int framesCount() {
-        return frames.size();
+        return framesCount;
     }
 
     public boolean isSpare() {
-        return currentFrame().isSpare();
+        return currentFrame.isSpare();
     }
 }
