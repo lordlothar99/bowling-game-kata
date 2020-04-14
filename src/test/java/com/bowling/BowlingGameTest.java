@@ -126,4 +126,18 @@ public class BowlingGameTest {
 
         assertThat(bowlingGame.score()).isEqualTo(17);
     }
+
+    @Test
+    public void should_have_two_bonus_rolls_when_strike_on_last_frame() {
+        iterate(0, i -> i).limit(9).forEach(i -> {
+            bowlingGame.roll(0);
+            bowlingGame.roll(0);
+        });
+        bowlingGame.roll(10);
+        bowlingGame.roll(7);
+
+        bowlingGame.roll(2);
+
+        assertThat(bowlingGame.score()).isEqualTo(19);
+    }
 }
