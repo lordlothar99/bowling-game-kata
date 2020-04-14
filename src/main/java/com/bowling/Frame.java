@@ -34,6 +34,9 @@ public class Frame {
         if (isSpare() && nextFrame != null) {
             score += nextFrame.pinsDown[0];
         }
+        if (isStrike() && nextFrame != null) {
+            score += nextFrame.innerScore();
+        }
         return score;
     }
 
@@ -42,7 +45,7 @@ public class Frame {
     }
 
     public boolean isFinished() {
-        return rollCount == MAX_ROLLS_PER_FRAME;
+        return rollCount == MAX_ROLLS_PER_FRAME || isStrike();
     }
 
     public boolean isSpare() {

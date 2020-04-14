@@ -70,6 +70,15 @@ public class BowlingGameTest {
     }
 
     @Test
+    public void should_frame_be_over_when_there_is_a_strike() {
+        bowlingGame.roll(10);
+
+        bowlingGame.roll(2);
+
+        assertThat(bowlingGame.framesCount()).isEqualTo(2);
+    }
+
+    @Test
     public void should_next_frame_counts_twice_when_there_is_a_strike() {
         bowlingGame.roll(10);
         bowlingGame.roll(6);
