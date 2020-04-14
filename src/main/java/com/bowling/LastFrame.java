@@ -27,6 +27,7 @@ public class LastFrame extends Frame {
     }
 
     private boolean isDoubleStrike() {
-        return pinsDown[0] == MAX_PINS_PER_ROLL && pinsDown[1] == MAX_PINS_PER_ROLL;
+        return pinsDown[0] == MAX_PINS_PER_ROLL &&
+                pinsDown[1] == MAX_PINS_PER_ROLL;
     }
 }
