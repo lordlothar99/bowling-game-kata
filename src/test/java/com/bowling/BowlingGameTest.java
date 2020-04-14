@@ -61,4 +61,11 @@ public class BowlingGameTest {
 
         assertThat(bowlingGame.score()).isEqualTo(22);
     }
+
+    @Test
+    public void should_be_a_strike_when_10_pins_down_in_same_frame_with_one_rolls() {
+        bowlingGame.roll(10);
+
+        assertThat(bowlingGame.isStrike()).isEqualTo(true);
+    }
 }
