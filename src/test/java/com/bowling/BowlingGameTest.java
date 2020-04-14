@@ -68,4 +68,14 @@ public class BowlingGameTest {
 
         assertThat(bowlingGame.isStrike()).isEqualTo(true);
     }
+
+    @Test
+    public void should_next_frame_counts_twice_when_there_is_a_strike() {
+        bowlingGame.roll(10);
+        bowlingGame.roll(6);
+
+        bowlingGame.roll(3);
+
+        assertThat(bowlingGame.score()).isEqualTo(28);
+    }
 }
