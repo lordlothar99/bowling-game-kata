@@ -33,17 +33,31 @@ public class Frame {
         int score = innerScore();
         if (nextFrame != null) {
             if (isSpare()) {
-                score += nextFrame.pinsDown[0];
+                score += nextFrame.firstRollScore();
             }
             if (isStrike()) {
-                score += nextFrame.innerScore();
+                score += nextFrame.firstRollScore() + nextFrame.secondRollScore();
             }
         }
         return score;
     }
 
     private int innerScore() {
-        return pinsDown[0] + pinsDown[1];
+        return firstRollScore() + pinsDown[1];
+    }
+
+    private int firstRollScore() {
+        return pinsDown[0];
+    }
+
+    private int secondRollScore() {
+        if (!isStrike()) {
+            return pinsDown[1];
+        } else if (nextFrame != null) {
+            return nextFrame.firstRollScore();
+        } else {
+            return 0;
+        }
     }
 
     public boolean isFinished() {

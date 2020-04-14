@@ -79,7 +79,7 @@ public class BowlingGameTest {
     }
 
     @Test
-    public void should_next_frame_counts_twice_when_there_is_a_strike() {
+    public void should_next_two_rolls_count_twice_when_there_is_a_strike() {
         bowlingGame.roll(10);
         bowlingGame.roll(6);
 
