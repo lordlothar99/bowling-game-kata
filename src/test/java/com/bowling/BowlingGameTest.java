@@ -51,4 +51,14 @@ public class BowlingGameTest {
 
         assertThat(bowlingGame.isSpare()).isEqualTo(true);
     }
+
+    @Test
+    public void should_next_roll_counts_twice_when_there_is_a_spare() {
+        bowlingGame.roll(4);
+        bowlingGame.roll(6);
+
+        bowlingGame.roll(6);
+
+        assertThat(bowlingGame.score()).isEqualTo(22);
+    }
 }
