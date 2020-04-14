@@ -87,6 +87,6 @@ public class Frame {
     }
 
     public boolean isStrike() {
-        return innerScore() == MAX_PINS_PER_ROLL && rollCount == 1;
+        return firstRollScore() == MAX_PINS_PER_ROLL;
     }
 }

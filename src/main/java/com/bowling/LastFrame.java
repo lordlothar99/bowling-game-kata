@@ -9,6 +9,10 @@ public class LastFrame extends Frame {
     }
 
     protected int maxRolls() {
-        return isSpare() ? MAX_ROLLS : super.maxRolls();
+        return isSpare() || isStrike() ? MAX_ROLLS : super.maxRolls();
+    }
+
+    public boolean isFinished() {
+        return rollCount == maxRolls();
     }
 }
