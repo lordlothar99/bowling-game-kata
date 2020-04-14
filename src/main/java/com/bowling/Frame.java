@@ -1,5 +1,7 @@
 package com.bowling;
 
+import static com.bowling.BowlingGame.MAX_PINS_PER_ROLL;
+
 public class Frame {
     public static final int MAX_ROLLS_PER_FRAME = 2;
     private int pinsDown;
@@ -18,6 +20,6 @@ public class Frame {
     }
 
     public boolean isSpare() {
-        return pinsDown == 10;
+        return pinsDown == MAX_PINS_PER_ROLL;
     }
 }
