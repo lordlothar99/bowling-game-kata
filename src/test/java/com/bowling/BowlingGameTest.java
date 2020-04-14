@@ -94,12 +94,22 @@ public class BowlingGameTest {
 
     @Test
     public void should_game_be_finished_when_there_are_10_frames() {
-        iterate(0, i->i).limit(10).forEach(i -> {
+        iterate(0, i -> i).limit(10).forEach(i -> {
             bowlingGame.roll(3);
             bowlingGame.roll(3);
         });
 
         assertThat(bowlingGame.framesCount()).isEqualTo(10);
         assertThat(bowlingGame.isFinished()).isTrue();
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void should_raise_an_error_when_player_tries_to_play_after_game_is_finished() {
+        iterate(0, i -> i).limit(10).forEach(i -> {
+            bowlingGame.roll(3);
+            bowlingGame.roll(3);
+        });
+
+        bowlingGame.roll(3);
     }
 }
