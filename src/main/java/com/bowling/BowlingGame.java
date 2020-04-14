@@ -37,4 +37,8 @@ public class BowlingGame {
     public boolean isSpare() {
         return currentFrame.isSpare();
     }
+
+    public boolean isStrike() {
+        return currentFrame.isStrike();
+    }
 }
