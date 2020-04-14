@@ -3,6 +3,7 @@ package com.bowling;
 import java.util.Arrays;
 
 import static com.bowling.BowlingGame.MAX_PINS_PER_ROLL;
+import static java.util.Arrays.stream;
 
 public class Frame {
     private static final int MAX_ROLLS_PER_FRAME = 2;
@@ -25,14 +26,14 @@ public class Frame {
         previousFrame.nextFrame = this;
     }
 
-        public void roll(int pins) {
+    public void roll(int pins) {
         pinsDown[rollCount] += pins;
         rollCount++;
     }
 
     public int totalScore() {
         int totalScore = score();
-        if (nextFrame != null) {
+        if (hasNextFrame()) {
             totalScore += nextFrame.totalScore();
         }
         return totalScore;
@@ -40,7 +41,7 @@ public class Frame {
 
     public int score() {
         int score = innerScore();
-        if (nextFrame != null) {
+        if (hasNextFrame()) {
             if (isSpare()) {
                 score += nextFrame.firstRollScore();
             }
@@ -51,8 +52,12 @@ public class Frame {
         return score;
     }
 
+    private boolean hasNextFrame() {
+        return nextFrame != null;
+    }
+
     private int innerScore() {
-        return Arrays.stream(pinsDown).sum();
+        return stream(pinsDown).sum();
     }
 
     private int firstRollScore() {
@@ -62,7 +67,7 @@ public class Frame {
     private int secondRollScore() {
         if (!isStrike()) {
             return pinsDown[1];
-        } else if (nextFrame != null) {
+        } else if (hasNextFrame()) {
             return nextFrame.firstRollScore();
         } else {
             return 0;
