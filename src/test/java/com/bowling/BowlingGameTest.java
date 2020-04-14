@@ -27,4 +27,9 @@ public class BowlingGameTest {
 
         assertThat(bowlingGame.score()).isEqualTo(8);
     }
+
+    @Test(expected = RuntimeException.class)
+    public void should_raise_an_error_when_cheater_player_hits_more_than_10_pins() {
+        bowlingGame.roll(11);
+    }
 }
