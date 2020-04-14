@@ -1,17 +1,35 @@
 package com.bowling;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BowlingGame {
 
-    private int pinsDown;
+    private List<Frame> frames = new ArrayList<>();
+
+    public BowlingGame() {
+        frames.add(new Frame());
+    }
 
     public void roll(int pins) {
         if (pins > 10) {
             throw new RuntimeException("There are only 10 pins, cheater !");
         }
-        pinsDown += pins;
+        if (currentFrame().isFinished()) {
+            frames.add(new Frame());
+        }
+        currentFrame().roll(pins);
+    }
+
+    private Frame currentFrame() {
+        return frames.get(frames.size() - 1);
     }
 
     public int score() {
-        return pinsDown;
+        return frames.stream().mapToInt(Frame::score).sum();
+    }
+
+    public int framesCount() {
+        return frames.size();
     }
 }
