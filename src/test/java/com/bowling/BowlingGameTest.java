@@ -112,4 +112,18 @@ public class BowlingGameTest {
 
         bowlingGame.roll(3);
     }
+
+    @Test
+    public void should_have_one_bonus_roll_when_spare_on_last_frame() {
+        iterate(0, i -> i).limit(9).forEach(i -> {
+            bowlingGame.roll(0);
+            bowlingGame.roll(0);
+        });
+        bowlingGame.roll(5);
+        bowlingGame.roll(5);
+
+        bowlingGame.roll(7);
+
+        assertThat(bowlingGame.score()).isEqualTo(17);
+    }
 }
