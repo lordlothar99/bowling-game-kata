@@ -17,6 +17,9 @@ public class BowlingGame {
     }
 
     public void roll(int pins) {
+        if (isFinished()) {
+            throw new RuntimeException("The game is finished !");
+        }
         if (pins > MAX_PINS_PER_ROLL) {
             throw new RuntimeException("There are only 10 pins, cheater !");
         }
