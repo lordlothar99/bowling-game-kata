@@ -5,6 +5,7 @@ import java.util.List;
 
 public class BowlingGame {
 
+    public static final int MAX_PINS_PER_ROLL = 10;
     private List<Frame> frames = new ArrayList<>();
 
     public BowlingGame() {
@@ -12,7 +13,7 @@ public class BowlingGame {
     }
 
     public void roll(int pins) {
-        if (pins > 10) {
+        if (pins > MAX_PINS_PER_ROLL) {
             throw new RuntimeException("There are only 10 pins, cheater !");
         }
         if (currentFrame().isFinished()) {

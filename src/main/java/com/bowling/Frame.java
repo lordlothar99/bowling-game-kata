@@ -1,6 +1,7 @@
 package com.bowling;
 
 public class Frame {
+    public static final int MAX_ROLLS_PER_FRAME = 2;
     private int pinsDown;
     private int rollCount = 0;
     public void roll(int pins) {
@@ -13,6 +14,6 @@ public class Frame {
     }
 
     public boolean isFinished() {
-        return rollCount == 2;
+        return rollCount == MAX_ROLLS_PER_FRAME;
     }
 }
