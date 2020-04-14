@@ -16,4 +16,8 @@ public class Frame {
     public boolean isFinished() {
         return rollCount == MAX_ROLLS_PER_FRAME;
     }
+
+    public boolean isSpare() {
+        return pinsDown == 10;
+    }
 }

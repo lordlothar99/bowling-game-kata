@@ -33,4 +33,8 @@ public class BowlingGame {
     public int framesCount() {
         return frames.size();
     }
+
+    public boolean isSpare() {
+        return currentFrame().isSpare();
+    }
 }
