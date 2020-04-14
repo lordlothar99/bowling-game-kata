@@ -1,22 +1,31 @@
 package com.bowling;
 
+import java.util.Arrays;
+
 import static com.bowling.BowlingGame.MAX_PINS_PER_ROLL;
 
 public class Frame {
-    public static final int MAX_ROLLS_PER_FRAME = 2;
+    private static final int MAX_ROLLS_PER_FRAME = 2;
 
-    private int[] pinsDown = new int[2];
-    private int rollCount = 0;
+    private int[] pinsDown;
+    protected int rollCount = 0;
     private Frame nextFrame;
 
     Frame() {
+        pinsDown = new int[MAX_ROLLS_PER_FRAME];
     }
 
     Frame(Frame previousFrame) {
+        this();
         previousFrame.nextFrame = this;
     }
 
-    public void roll(int pins) {
+    protected Frame(Frame previousFrame, int maxRolls) {
+        pinsDown = new int[maxRolls];
+        previousFrame.nextFrame = this;
+    }
+
+        public void roll(int pins) {
         pinsDown[rollCount] += pins;
         rollCount++;
     }
@@ -43,7 +52,7 @@ public class Frame {
     }
 
     private int innerScore() {
-        return firstRollScore() + pinsDown[1];
+        return Arrays.stream(pinsDown).sum();
     }
 
     private int firstRollScore() {
@@ -61,7 +70,11 @@ public class Frame {
     }
 
     public boolean isFinished() {
-        return rollCount == MAX_ROLLS_PER_FRAME || isStrike();
+        return rollCount == maxRolls() || isStrike();
+    }
+
+    protected int maxRolls() {
+        return 2;
     }
 
     public boolean isSpare() {

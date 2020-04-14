@@ -24,7 +24,11 @@ public class BowlingGame {
             throw new RuntimeException("There are only 10 pins, cheater !");
         }
         if (currentFrame.isFinished()) {
-            currentFrame = new Frame(currentFrame);
+            if (framesCount == MAX_FRAMES_COUNT - 1) {
+                currentFrame = new LastFrame(currentFrame);
+            } else {
+                currentFrame = new Frame(currentFrame);
+            }
             framesCount++;
         }
         currentFrame.roll(pins);
