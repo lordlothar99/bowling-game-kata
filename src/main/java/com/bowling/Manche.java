@@ -3,6 +3,7 @@ package com.bowling;
 public class Manche {
 
     public static final int NOMBRE_MAX_DE_QUILLES_PAR_MANCHE = 10;
+    public static final int NOMBRE_MAX_DE_LANCERS = 2;
     private int score;
     private int nombreLancers;
 
@@ -19,7 +20,7 @@ public class Manche {
     }
 
     public boolean estTerminee() {
-        return nombreLancers == 2;
+        return nombreLancers == NOMBRE_MAX_DE_LANCERS;
     }
 
     public boolean isSpare() {
