@@ -10,7 +10,7 @@ public class DerniereManche extends Manche {
     }
 
     public void lancer(int quillesTombees) {
-        if (!estUnSpare()) {
+        if (!estUnSpare() && !estUnStrike()) {
             super.lancer(quillesTombees);
         } else {
             this.quillesTombees[nombreLancers] = quillesTombees;
@@ -20,7 +20,7 @@ public class DerniereManche extends Manche {
 
     @Override
     public boolean estTerminee() {
-        if (estUnSpare()) {
+        if (estUnSpare() || estUnStrike()) {
             return nombreLancers == 3;
         } else {
             return super.estTerminee();
@@ -29,5 +29,9 @@ public class DerniereManche extends Manche {
 
     public boolean estUnSpare() {
         return score1erLancer() + score2eLancer() == NOMBRE_MAX_DE_QUILLES_PAR_MANCHE;
+    }
+
+    public boolean estUnStrike() {
+        return score1erLancer() == NOMBRE_MAX_DE_QUILLES_PAR_MANCHE;
     }
 }
