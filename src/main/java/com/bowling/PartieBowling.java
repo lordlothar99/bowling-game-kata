@@ -3,13 +3,13 @@ package com.bowling;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BowlingGame {
+public class PartieBowling {
 
     public static final int NOMBRE_MAX_DE_MANCHES = 10;
     private Manche mancheEnCours;
     private List<Manche> manches;
 
-    public BowlingGame() {
+    public PartieBowling() {
         manches = new ArrayList<>();
         mancheEnCours = new Manche();
         manches.add(mancheEnCours);

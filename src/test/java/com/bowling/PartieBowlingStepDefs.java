@@ -7,27 +7,27 @@ import io.cucumber.java.fr.Lorsque;
 import static org.assertj.core.api.Assertions.assertThat;
 import static java.util.stream.Stream.iterate;
 
-public class BowlingGameStepDefs {
+public class PartieBowlingStepDefs {
 
-    private BowlingGame bowlingGame;
-    private Exception thrownException;
+    private PartieBowling partieBowling;
+    private Exception erreurDeclenchee;
 
     @Etantdonné("une nouvelle partie de bowling")
     public void une_nouvelle_partie_de_bowling() {
-        bowlingGame = new BowlingGame();
+        partieBowling = new PartieBowling();
     }
 
     @Alors("le score est égal à {int}")
     public void le_score_est_égal_à(int score) {
-        assertThat(bowlingGame.score()).isEqualTo(score);
+        assertThat(partieBowling.score()).isEqualTo(score);
     }
 
     @Lorsque("le joueur( a) fait tomber {int} quille(s)")
     public void le_joueur_fait_tomber_quilles(int quillesTombees) {
         try {
-            bowlingGame.lancer(quillesTombees);
+            partieBowling.lancer(quillesTombees);
         } catch (Exception e) {
-            this.thrownException = e;
+            this.erreurDeclenchee = e;
         }
     }
 
@@ -38,31 +38,31 @@ public class BowlingGameStepDefs {
 
     @Alors("le nombre de manches est {int}")
     public void le_nombre_de_manches_est(int nombreManches) {
-        assertThat(bowlingGame.nombreManches()).isEqualTo(nombreManches);
+        assertThat(partieBowling.nombreManches()).isEqualTo(nombreManches);
     }
 
     @Alors("il y a une erreur")
     public void il_y_a_une_erreur() {
-        assertThat(thrownException).as("Une erreur devrait survenir").isNotNull();
+        assertThat(erreurDeclenchee).as("Une erreur devrait survenir").isNotNull();
     }
 
     @Alors("il y a un Spare")
     public void il_y_a_un_Spare() {
-        assertThat(bowlingGame.isSpare()).isTrue();
+        assertThat(partieBowling.isSpare()).isTrue();
     }
 
     @Alors("il y a un Strike")
     public void il_y_a_un_Strike() {
-        assertThat(bowlingGame.isStrike()).isTrue();
+        assertThat(partieBowling.isStrike()).isTrue();
     }
 
     @Alors("la manche est terminée")
     public void la_manche_est_terminée() {
-        assertThat(bowlingGame.isStrike()).isTrue();
+        assertThat(partieBowling.isStrike()).isTrue();
     }
 
     @Alors("la partie est terminée")
     public void la_partie_est_terminée() {
-        assertThat(bowlingGame.estTerminee()).isTrue();
+        assertThat(partieBowling.estTerminee()).isTrue();
     }
 }
