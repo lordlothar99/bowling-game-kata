@@ -44,3 +44,8 @@ Fonctionnalité: Calculer le score d'une partie de bowling pour 1 joueur
   Scénario: Faire tomber les 10 quilles d'une manche en un seul coup s'appelle un Strike
     Lorsque le joueur fait tomber 10 quilles
     Alors il y a un Strike
+
+  Scénario: Après un Strike, la manche est terminée
+    Etant donné que le joueur a fait tomber 10 quilles
+    Lorsque le joueur fait tomber 1 quille
+    Alors le nombre de manches est 2

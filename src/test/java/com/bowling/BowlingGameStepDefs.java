@@ -21,7 +21,7 @@ public class BowlingGameStepDefs {
         assertThat(bowlingGame.score()).isEqualTo(score);
     }
 
-    @Lorsque("le joueur( a) fait tomber {int} quilles")
+    @Lorsque("le joueur( a) fait tomber {int} quille(s)")
     public void le_joueur_fait_tomber_quilles(int quilles) {
         try {
             bowlingGame.lancer(quilles);
@@ -47,6 +47,11 @@ public class BowlingGameStepDefs {
 
     @Alors("il y a un Strike")
     public void il_y_a_un_Strike() {
+        assertThat(bowlingGame.isStrike()).isTrue();
+    }
+
+    @Alors("la manche est terminée")
+    public void la_manche_est_terminée() {
         assertThat(bowlingGame.isStrike()).isTrue();
     }
 }
