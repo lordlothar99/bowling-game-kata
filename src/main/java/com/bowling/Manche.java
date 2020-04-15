@@ -9,7 +9,7 @@ public class Manche {
     private Manche mancheSuivante;
 
     public void lancer(int quillesTombees) {
-        if (premierLancer() + quillesTombees > NOMBRE_MAX_DE_QUILLES_PAR_MANCHE) {
+        if (score1erLancer() + quillesTombees > NOMBRE_MAX_DE_QUILLES_PAR_MANCHE) {
             throw new RuntimeException("Mais d'ou viennent ces quilles ??");
         }
         this.quillesTombees[nombreLancers] = quillesTombees;
@@ -20,33 +20,33 @@ public class Manche {
         int bonus = 0;
         if (mancheSuivante != null) {
             if (isSpare()) {
-                bonus = mancheSuivante.premierLancer();
+                bonus = mancheSuivante.score1erLancer();
             } else if (isStrike()) {
-                bonus = mancheSuivante.deuxLancersSuivants();
+                bonus = mancheSuivante.score2LancersSuivants();
             }
         }
         return totalQuillesTombees() + bonus;
     }
 
-    private int deuxLancersSuivants() {
-        int deuxLancersSuivants = premierLancer();
+    private int score2LancersSuivants() {
+        int deux2Suivants = score1erLancer();
         if (!isStrike()) {
-            deuxLancersSuivants += secondLancer();
+            deux2Suivants += score2eLancer();
         } else if (mancheSuivante != null){
-            deuxLancersSuivants += mancheSuivante.premierLancer();
+            deux2Suivants += mancheSuivante.score1erLancer();
         }
-        return deuxLancersSuivants;
+        return deux2Suivants;
     }
 
     private int totalQuillesTombees() {
-        return premierLancer() + secondLancer();
+        return score1erLancer() + score2eLancer();
     }
 
-    private int premierLancer() {
+    private int score1erLancer() {
         return this.quillesTombees[0];
     }
 
-    private int secondLancer() {
+    private int score2eLancer() {
         return this.quillesTombees[1];
     }
 
