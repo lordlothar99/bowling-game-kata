@@ -16,6 +16,9 @@ public class BowlingGame {
     }
 
     public void lancer(int quillesTombees) {
+        if (estTerminee()) {
+            throw new RuntimeException("La partie est terminée !");
+        }
         if (mancheEnCours.estTerminee()) {
             mancheEnCours = mancheEnCours.mancheSuivante();
             manches.add(mancheEnCours);
