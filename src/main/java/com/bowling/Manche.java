@@ -21,4 +21,8 @@ public class Manche {
     public boolean estTerminee() {
         return nombreLancers == 2;
     }
+
+    public boolean isSpare() {
+        return nombreLancers == 2 && score == NOMBRE_MAX_DE_QUILLES_PAR_MANCHE;
+    }
 }

@@ -29,4 +29,8 @@ public class BowlingGame {
     public int nombreManches() {
         return manches.size();
     }
+
+    public boolean isSpare() {
+        return mancheEnCours.isSpare();
+    }
 }
