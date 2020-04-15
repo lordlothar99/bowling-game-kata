@@ -24,4 +24,9 @@ public class BowlingGameStepDefs {
     public void le_joueur_fait_tomber_quilles(int quilles) {
         bowlingGame.lancer(quilles);
     }
+
+    @Alors("le nombre de manches est {int}")
+    public void le_nombre_de_manches_est(int nombreManches) {
+        assertThat(bowlingGame.nombreManches()).isEqualTo(nombreManches);
+    }
 }

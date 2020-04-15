@@ -18,3 +18,9 @@ Fonctionnalité: Calculer le score d'une partie de bowling pour 1 joueur
     Etant donné que le joueur a fait tomber 6 quilles
     Lorsque le joueur fait tomber 3 quilles
     Alors le score est égal à 9
+
+  Scénario: Une manche correspond à 2 lancers maximum
+    Etant donné que le joueur a fait tomber 6 quilles
+    Etant donné que le joueur a fait tomber 4 quilles
+    Lorsque le joueur fait tomber 3 quilles
+    Alors le nombre de manches est 2
