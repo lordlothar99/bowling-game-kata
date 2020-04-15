@@ -5,6 +5,7 @@ import java.util.List;
 
 public class BowlingGame {
 
+    public static final int NOMBRE_MAX_DE_MANCHES = 10;
     private Manche mancheEnCours;
     private List<Manche> manches;
 
@@ -39,6 +40,6 @@ public class BowlingGame {
     }
 
     public boolean estTerminee() {
-        return mancheEnCours.estTerminee() && nombreManches() == 10;
+        return mancheEnCours.estTerminee() && nombreManches() == NOMBRE_MAX_DE_MANCHES;
     }
 }
