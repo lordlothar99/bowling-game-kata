@@ -37,7 +37,7 @@ public class Manche {
     }
 
     public boolean estTerminee() {
-        return nombreLancers == NOMBRE_MAX_DE_LANCERS;
+        return nombreLancers == NOMBRE_MAX_DE_LANCERS || isStrike();
     }
 
     public boolean isSpare() {
