@@ -4,9 +4,14 @@ public class Manche {
 
     public static final int NOMBRE_MAX_DE_QUILLES_PAR_MANCHE = 10;
     public static final int NOMBRE_MAX_DE_LANCERS = 2;
-    private int[] quillesTombees = new int[NOMBRE_MAX_DE_LANCERS];
-    private int nombreLancers;
+    protected int[] quillesTombees = new int[NOMBRE_MAX_DE_LANCERS];
+    protected int nombreLancers;
     private Manche mancheSuivante;
+    private int numeroManche;
+
+    public Manche(int numeroManche) {
+        this.numeroManche = numeroManche;
+    }
 
     public void lancer(int quillesTombees) {
         if (score1erLancer() + quillesTombees > NOMBRE_MAX_DE_QUILLES_PAR_MANCHE) {
@@ -42,11 +47,11 @@ public class Manche {
         return score1erLancer() + score2eLancer();
     }
 
-    private int score1erLancer() {
+    protected int score1erLancer() {
         return this.quillesTombees[0];
     }
 
-    private int score2eLancer() {
+    protected int score2eLancer() {
         return this.quillesTombees[1];
     }
 
@@ -60,7 +65,9 @@ public class Manche {
 
     public Manche mancheSuivante() {
         if (mancheSuivante == null) {
-            mancheSuivante = new Manche();
+            mancheSuivante = numeroManche == 9 ?
+                    new DerniereManche() :
+                    new Manche(numeroManche + 1);
         }
         return mancheSuivante;
     }

@@ -11,7 +11,7 @@ public class PartieBowling {
 
     public PartieBowling() {
         manches = new ArrayList<>();
-        mancheEnCours = new Manche();
+        mancheEnCours = new Manche(1);
         manches.add(mancheEnCours);
     }
 
