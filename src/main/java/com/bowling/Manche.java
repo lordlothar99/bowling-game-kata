@@ -50,4 +50,8 @@ public class Manche {
         }
         return mancheSuivante;
     }
+
+    public boolean isStrike() {
+        return nombreLancers == 1 && totalQuillesTombees() == NOMBRE_MAX_DE_QUILLES_PAR_MANCHE;
+    }
 }

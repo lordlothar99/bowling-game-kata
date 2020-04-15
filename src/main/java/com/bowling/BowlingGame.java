@@ -33,4 +33,8 @@ public class BowlingGame {
     public boolean isSpare() {
         return mancheEnCours.isSpare();
     }
+
+    public boolean isStrike() {
+        return mancheEnCours.isStrike();
+    }
 }
