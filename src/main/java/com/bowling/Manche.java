@@ -18,10 +18,24 @@ public class Manche {
 
     public int score() {
         int bonus = 0;
-        if (isSpare() && mancheSuivante != null) {
-            bonus = mancheSuivante.premierLancer();
+        if (mancheSuivante != null) {
+            if (isSpare()) {
+                bonus = mancheSuivante.premierLancer();
+            } else if (isStrike()) {
+                bonus = mancheSuivante.deuxLancersSuivants();
+            }
         }
         return totalQuillesTombees() + bonus;
+    }
+
+    private int deuxLancersSuivants() {
+        int deuxLancersSuivants = premierLancer();
+        if (!isStrike()) {
+            deuxLancersSuivants += secondLancer();
+        } else if (mancheSuivante != null){
+            deuxLancersSuivants += mancheSuivante.premierLancer();
+        }
+        return deuxLancersSuivants;
     }
 
     private int totalQuillesTombees() {
