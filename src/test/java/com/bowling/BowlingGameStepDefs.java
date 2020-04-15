@@ -39,4 +39,9 @@ public class BowlingGameStepDefs {
     public void il_y_a_une_erreur() {
         assertThat(thrownException).isNotNull();
     }
+
+    @Alors("il y a un Spare")
+    public void il_y_a_un_Spare() {
+        assertThat(bowlingGame.isSpare()).isTrue();
+    }
 }

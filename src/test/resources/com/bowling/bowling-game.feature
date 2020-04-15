@@ -29,3 +29,8 @@ Fonctionnalité: Calculer le score d'une partie de bowling pour 1 joueur
     Etant donné que le joueur a fait tomber 6 quilles
     Lorsque le joueur fait tomber 5 quilles
     Alors il y a une erreur
+
+  Scénario: Faire tomber les 10 quilles d'une manche en deux coups s'appelle un Spare
+    Etant donné que le joueur a fait tomber 6 quilles
+    Lorsque le joueur fait tomber 4 quilles
+    Alors il y a un Spare
