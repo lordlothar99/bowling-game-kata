@@ -3,7 +3,6 @@ package com.bowling;
 import io.cucumber.java.fr.Alors;
 import io.cucumber.java.fr.Etantdonné;
 import io.cucumber.java.fr.Lorsque;
-import org.assertj.core.api.Assertions;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -23,6 +22,6 @@ public class BowlingGameStepDefs {
 
     @Lorsque("le joueur fait tomber {int} quilles")
     public void le_joueur_fait_tomber_quilles(int quilles) {
-        bowlingGame.roll(quilles);
+        bowlingGame.lancer(quilles);
     }
 }

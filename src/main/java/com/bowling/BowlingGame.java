@@ -2,13 +2,13 @@ package com.bowling;
 
 public class BowlingGame {
 
-	private int pins;
+	private int quillesTombees;
 
-	public void roll(int pins) {
-		this.pins = pins;
+	public void lancer(int quillesTombees) {
+		this.quillesTombees = quillesTombees;
 	}
 
 	public int score() {
-		return pins;
+		return quillesTombees;
 	}
 }
