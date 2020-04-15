@@ -20,7 +20,7 @@ public class BowlingGameStepDefs {
         assertThat(bowlingGame.score()).isEqualTo(score);
     }
 
-    @Lorsque("le joueur fait tomber {int} quilles")
+    @Lorsque("le joueur( a) fait tomber {int} quilles")
     public void le_joueur_fait_tomber_quilles(int quilles) {
         bowlingGame.lancer(quilles);
     }

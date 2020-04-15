@@ -12,3 +12,9 @@ Fonctionnalité: Calculer le score d'une partie de bowling pour 1 joueur
     Étant donnée une nouvelle partie de bowling
     Lorsque le joueur fait tomber 4 quilles
     Alors le score est égal à 4
+
+  Scénario: Le score après deux lancers est égal à la somme des quilles tombées
+    Etant donnée une nouvelle partie de bowling
+    Et que le joueur a fait tomber 6 quilles
+    Lorsque le joueur fait tomber 3 quilles
+    Alors le score est égal à 9
