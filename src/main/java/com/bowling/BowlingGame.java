@@ -37,4 +37,8 @@ public class BowlingGame {
     public boolean isStrike() {
         return mancheEnCours.isStrike();
     }
+
+    public boolean estTerminee() {
+        return mancheEnCours.estTerminee() && nombreManches() == 10;
+    }
 }
