@@ -55,3 +55,8 @@ Fonctionnalité: Calculer le score d'une partie de bowling pour 1 joueur
     Et que  le joueur a fait tomber 4 quilles
     Lorsque le joueur fait tomber 3 quilles
     Alors le score est égal à 24
+
+  Scénario: La partie se termine après 10 manches
+    Etant donné que le joueur a fait tomber 0 quilles 19 fois
+    Lorsque le joueur fait tomber 0 quille
+    Alors la partie est terminée
