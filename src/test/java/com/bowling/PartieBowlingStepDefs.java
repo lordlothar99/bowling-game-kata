@@ -1,5 +1,6 @@
 package com.bowling;
 
+import io.cucumber.java.After;
 import io.cucumber.java.fr.Alors;
 import io.cucumber.java.fr.Etantdonné;
 import io.cucumber.java.fr.Lorsque;
@@ -11,6 +12,7 @@ public class PartieBowlingStepDefs {
 
     private PartieBowling partieBowling;
     private Exception erreurDeclenchee;
+    private boolean verifierAbsenceErreur = true;
 
     @Etantdonné("une nouvelle partie de bowling")
     public void une_nouvelle_partie_de_bowling() {
@@ -43,6 +45,7 @@ public class PartieBowlingStepDefs {
 
     @Alors("il y a une erreur")
     public void il_y_a_une_erreur() {
+        verifierAbsenceErreur = false;
         assertThat(erreurDeclenchee).as("Une erreur devrait survenir").isNotNull();
     }
 
@@ -64,5 +67,12 @@ public class PartieBowlingStepDefs {
     @Alors("la partie est terminée")
     public void la_partie_est_terminée() {
         assertThat(partieBowling.estTerminee()).isTrue();
+    }
+
+    @After
+    public void il_n_y_a_pas_eu_d_erreur() {
+        if (verifierAbsenceErreur) {
+            assertThat(erreurDeclenchee).isNull();
+        }
     }
 }

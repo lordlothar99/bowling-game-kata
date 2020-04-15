@@ -57,12 +57,20 @@ Fonctionnalité: Calculer le score d'une partie de bowling pour 1 joueur
     Alors le score est égal à 24
 
   Scénario: La partie se termine après 10 manches
-    Etant donné que le joueur a fait tomber 0 quilles 19 fois
+    Etant donné que le joueur a fait tomber 0 quille 19 fois
     Lorsque le joueur fait tomber 0 quille
     Alors le nombre de manches est 10
     Et la partie est terminée
 
   Scénario: Si le joueur essaie de continuer à jouer après la fin de la partie, une erreur survient
-    Etant donné que le joueur a fait tomber 0 quilles 20 fois
+    Etant donné que le joueur a fait tomber 0 quille 20 fois
     Lorsque le joueur fait tomber 3 quilles
     Alors il y a une erreur
+
+  Scénario: Lors de la 10e et dernière manche, si le joueur fait un Spare, alors il a un lancer bonus
+    Etant donné que le joueur a fait tomber 10 quilles 9 fois
+    Et que le joueur a fait tomber 3 quilles
+    Et que le joueur a fait tomber 7 quilles
+    Lorsque le joueur fait tomber 7 quilles
+    Alors le nombre de manches est 10
+    Et la partie est terminée
