@@ -74,3 +74,10 @@ Fonctionnalité: Calculer le score d'une partie de bowling pour 1 joueur
     Lorsque le joueur fait tomber 7 quilles
     Alors le nombre de manches est 10
     Et la partie est terminée
+
+  Scénario: Lors de la 10e et dernière manche, si le joueur fait un Strike, alors il a deux lancers bonus
+    Etant donné que le joueur a fait tomber 10 quilles 10 fois
+    Et que le joueur a fait tomber 7 quilles
+    Lorsque le joueur fait tomber 7 quilles
+    Alors le nombre de manches est 10
+    Et la partie est terminée
