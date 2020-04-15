@@ -2,11 +2,12 @@ package com.bowling;
 
 public class Manche {
 
+    public static final int NOMBRE_MAX_DE_QUILLES_PAR_MANCHE = 10;
     private int score;
     private int nombreLancers;
 
     public void lancer(int quillesTombees) {
-        if (score + quillesTombees > 10) {
+        if (score + quillesTombees > NOMBRE_MAX_DE_QUILLES_PAR_MANCHE) {
             throw new RuntimeException("Mais d'ou viennent ces quilles ??");
         }
         this.score += quillesTombees;
