@@ -81,3 +81,13 @@ Fonctionnalité: Calculer le score d'une partie de bowling pour 1 joueur
     Lorsque le joueur fait tomber 7 quilles
     Alors le nombre de manches est 10
     Et la partie est terminée
+
+  Plan du scénario: Quelques exemples de calcul de score
+    Etant donné que le joueur a fait tomber les quilles suivantes : <quilles tombees>
+    Alors le score est égal à <score attendu>
+    Exemples:
+    | quilles tombees                               | score attendu |
+    | 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,2,2    | 14            |
+    | 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,10,2   | 22            |
+    | 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,10,10  | 30            |
+    | 10,10,10,10,10,10,10,10,10,10,10,10           | 300           |

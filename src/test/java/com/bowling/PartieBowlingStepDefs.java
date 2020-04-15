@@ -3,10 +3,13 @@ package com.bowling;
 import io.cucumber.java.After;
 import io.cucumber.java.fr.Alors;
 import io.cucumber.java.fr.Etantdonné;
+import io.cucumber.java.fr.Etantdonnéque;
 import io.cucumber.java.fr.Lorsque;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static java.lang.Integer.parseInt;
+import static java.util.Arrays.asList;
 import static java.util.stream.Stream.iterate;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class PartieBowlingStepDefs {
 
@@ -67,6 +70,13 @@ public class PartieBowlingStepDefs {
     @Alors("la partie est terminée")
     public void la_partie_est_terminée() {
         assertThat(partieBowling.estTerminee()).isTrue();
+    }
+
+    @Etantdonnéque("le joueur a fait tomber les quilles suivantes : {}")
+    public void le_joueur_a_fait_tomber_les_quilles_suivantes(String quillesTombees) {
+        asList(quillesTombees.split(",")).stream()
+                .mapToInt(s -> parseInt(s))
+                .forEach(lancer -> le_joueur_fait_tomber_quilles(lancer));
     }
 
     @After
