@@ -1,13 +1,20 @@
 package com.bowling;
 
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
 import org.assertj.core.util.Streams;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
+import java.util.Arrays;
 import java.util.stream.Stream;
 
+import static com.bowling.BowlingGameTestBuilder.expectScore;
+import static java.util.Arrays.stream;
 import static java.util.stream.Stream.iterate;
 import static org.assertj.core.api.Assertions.assertThat;
 
+@RunWith(JUnitParamsRunner.class)
 public class BowlingGameTest {
     private BowlingGame bowlingGame = new BowlingGame();
 
@@ -148,5 +155,21 @@ public class BowlingGameTest {
         });
 
         assertThat(bowlingGame.score()).isEqualTo(300);
+    }
+
+    @Test
+    @Parameters(method = "games_test_data")
+    public void should_game_score_be_well_computed(int[] rolls, int expectedScore) {
+        stream(rolls).forEach(pins -> bowlingGame.roll(pins));
+
+        assertThat(bowlingGame.score()).isEqualTo(expectedScore);
+    }
+
+    private Object[] games_test_data() {
+        return new Object[]{
+                expectScore(5).forRolls(4, 1),
+                expectScore(128).forRolls(10, 10, 10, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4),
+                expectScore(267).forRolls(10, 10, 10, 10, 10, 10, 10, 10, 10, 5, 5, 2)
+        };
     }
 }
