@@ -34,3 +34,9 @@ Fonctionnalité: Calculer le score d'une partie de bowling pour 1 joueur
     Etant donné que le joueur a fait tomber 6 quilles
     Lorsque le joueur fait tomber 4 quilles
     Alors il y a un Spare
+
+  Scénario: Lorsqu'il y a un Spare, le score de la manche obtient un bonus correspondant au lancer suivant
+    Etant donné que le joueur a fait tomber 6 quilles
+    Et que  le joueur a fait tomber 4 quilles
+    Lorsque le joueur fait tomber 3 quilles
+    Alors le score est égal à 16
