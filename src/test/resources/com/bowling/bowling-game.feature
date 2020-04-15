@@ -49,3 +49,9 @@ Fonctionnalité: Calculer le score d'une partie de bowling pour 1 joueur
     Etant donné que le joueur a fait tomber 10 quilles
     Lorsque le joueur fait tomber 1 quille
     Alors le nombre de manches est 2
+
+  Scénario: Lorsqu'il y a un Strike, le score de la manche obtient un bonus correspondant aux deux lancers suivants
+    Etant donné que le joueur a fait tomber 10 quilles
+    Et que  le joueur a fait tomber 4 quilles
+    Lorsque le joueur fait tomber 3 quilles
+    Alors le score est égal à 24
