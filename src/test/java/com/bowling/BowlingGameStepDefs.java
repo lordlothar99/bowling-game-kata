@@ -43,7 +43,7 @@ public class BowlingGameStepDefs {
 
     @Alors("il y a une erreur")
     public void il_y_a_une_erreur() {
-        assertThat(thrownException).isNotNull();
+        assertThat(thrownException).as("Une erreur devrait survenir").isNotNull();
     }
 
     @Alors("il y a un Spare")

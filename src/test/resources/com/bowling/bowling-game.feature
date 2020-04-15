@@ -61,3 +61,8 @@ Fonctionnalité: Calculer le score d'une partie de bowling pour 1 joueur
     Lorsque le joueur fait tomber 0 quille
     Alors le nombre de manches est 10
     Et la partie est terminée
+
+  Scénario: Si le joueur essaie de continuer à jouer après la fin de la partie, une erreur survient
+    Etant donné que le joueur a fait tomber 0 quilles 20 fois
+    Lorsque le joueur fait tomber 3 quilles
+    Alors il y a une erreur
