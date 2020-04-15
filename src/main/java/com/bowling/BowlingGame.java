@@ -16,7 +16,7 @@ public class BowlingGame {
 
     public void lancer(int quillesTombees) {
         if (mancheEnCours.estTerminee()) {
-            mancheEnCours = new Manche();
+            mancheEnCours = mancheEnCours.mancheSuivante();
             manches.add(mancheEnCours);
         }
         mancheEnCours.lancer(quillesTombees);
