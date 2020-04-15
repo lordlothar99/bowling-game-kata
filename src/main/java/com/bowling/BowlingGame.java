@@ -32,11 +32,11 @@ public class BowlingGame {
     }
 
     public boolean isSpare() {
-        return mancheEnCours.isSpare();
+        return mancheEnCours.estUnSpare();
     }
 
     public boolean isStrike() {
-        return mancheEnCours.isStrike();
+        return mancheEnCours.estUnStrike();
     }
 
     public boolean estTerminee() {

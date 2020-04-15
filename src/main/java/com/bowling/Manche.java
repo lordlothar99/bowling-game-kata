@@ -19,9 +19,9 @@ public class Manche {
     public int score() {
         int bonus = 0;
         if (mancheSuivante != null) {
-            if (isSpare()) {
+            if (estUnSpare()) {
                 bonus = mancheSuivante.score1erLancer();
-            } else if (isStrike()) {
+            } else if (estUnStrike()) {
                 bonus = mancheSuivante.score2LancersSuivants();
             }
         }
@@ -30,7 +30,7 @@ public class Manche {
 
     private int score2LancersSuivants() {
         int deux2Suivants = score1erLancer();
-        if (!isStrike()) {
+        if (!estUnStrike()) {
             deux2Suivants += score2eLancer();
         } else if (mancheSuivante != null){
             deux2Suivants += mancheSuivante.score1erLancer();
@@ -51,10 +51,10 @@ public class Manche {
     }
 
     public boolean estTerminee() {
-        return nombreLancers == NOMBRE_MAX_DE_LANCERS || isStrike();
+        return nombreLancers == NOMBRE_MAX_DE_LANCERS || estUnStrike();
     }
 
-    public boolean isSpare() {
+    public boolean estUnSpare() {
         return nombreLancers == 2 && totalQuillesTombees() == NOMBRE_MAX_DE_QUILLES_PAR_MANCHE;
     }
 
@@ -65,7 +65,7 @@ public class Manche {
         return mancheSuivante;
     }
 
-    public boolean isStrike() {
+    public boolean estUnStrike() {
         return nombreLancers == 1 && totalQuillesTombees() == NOMBRE_MAX_DE_QUILLES_PAR_MANCHE;
     }
 }

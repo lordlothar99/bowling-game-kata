@@ -23,17 +23,17 @@ public class BowlingGameStepDefs {
     }
 
     @Lorsque("le joueur( a) fait tomber {int} quille(s)")
-    public void le_joueur_fait_tomber_quilles(int quilles) {
+    public void le_joueur_fait_tomber_quilles(int quillesTombees) {
         try {
-            bowlingGame.lancer(quilles);
+            bowlingGame.lancer(quillesTombees);
         } catch (Exception e) {
             this.thrownException = e;
         }
     }
 
     @Lorsque("le joueur( a) fait tomber {int} quille(s) {int} fois")
-    public void le_joueur_fait_tomber_quilles_n_fois(int quilles, int nombreDeFois) {
-        iterate(0, i -> i).limit(nombreDeFois).forEach(i -> le_joueur_fait_tomber_quilles(quilles));
+    public void le_joueur_fait_tomber_quilles_n_fois(int quillesTombees, int nombreDeFois) {
+        iterate(0, i -> i).limit(nombreDeFois).forEach(i -> le_joueur_fait_tomber_quilles(quillesTombees));
     }
 
     @Alors("le nombre de manches est {int}")
