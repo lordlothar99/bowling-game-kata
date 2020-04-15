@@ -44,4 +44,9 @@ public class BowlingGameStepDefs {
     public void il_y_a_un_Spare() {
         assertThat(bowlingGame.isSpare()).isTrue();
     }
+
+    @Alors("il y a un Strike")
+    public void il_y_a_un_Strike() {
+        assertThat(bowlingGame.isStrike()).isTrue();
+    }
 }

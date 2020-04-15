@@ -40,3 +40,7 @@ Fonctionnalité: Calculer le score d'une partie de bowling pour 1 joueur
     Et que  le joueur a fait tomber 4 quilles
     Lorsque le joueur fait tomber 3 quilles
     Alors le score est égal à 16
+
+  Scénario: Faire tomber les 10 quilles d'une manche en un seul coup s'appelle un Strike
+    Lorsque le joueur fait tomber 10 quilles
+    Alors il y a un Strike
