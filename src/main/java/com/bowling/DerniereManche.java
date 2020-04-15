@@ -34,4 +34,14 @@ public class DerniereManche extends Manche {
     public boolean estUnStrike() {
         return score1erLancer() == NOMBRE_MAX_DE_QUILLES_PAR_MANCHE;
     }
+
+    @Override
+    protected int totalQuillesTombees() {
+        return score1erLancer() + score2eLancer() + quillesTombees[2];
+    }
+
+    @Override
+    protected int score2Lancers() {
+        return score1erLancer() + score2eLancer();
+    }
 }

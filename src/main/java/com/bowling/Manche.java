@@ -22,28 +22,32 @@ public class Manche {
     }
 
     public int score() {
+        return totalQuillesTombees() + bonus();
+    }
+
+    protected int bonus() {
         int bonus = 0;
         if (mancheSuivante != null) {
             if (estUnSpare()) {
                 bonus = mancheSuivante.score1erLancer();
             } else if (estUnStrike()) {
-                bonus = mancheSuivante.score2LancersSuivants();
+                bonus = mancheSuivante.score2Lancers();
             }
         }
-        return totalQuillesTombees() + bonus;
+        return bonus;
     }
 
-    private int score2LancersSuivants() {
-        int deux2Suivants = score1erLancer();
+    protected int score2Lancers() {
+        int score2Lancers = score1erLancer();
         if (!estUnStrike()) {
-            deux2Suivants += score2eLancer();
+            score2Lancers += score2eLancer();
         } else if (mancheSuivante != null){
-            deux2Suivants += mancheSuivante.score1erLancer();
+            score2Lancers += mancheSuivante.score1erLancer();
         }
-        return deux2Suivants;
+        return score2Lancers;
     }
 
-    private int totalQuillesTombees() {
+    protected int totalQuillesTombees() {
         return score1erLancer() + score2eLancer();
     }
 
