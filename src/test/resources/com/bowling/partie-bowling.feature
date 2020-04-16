@@ -4,6 +4,10 @@ Fonctionnalité: Calculer le score d'une partie de bowling pour 1 joueur
   Afin de savoir si je progresse
   J'ai besoin de connaître le score de mes parties
 
+  Vous pouvez trouver un outil de test en ligne [ici](https://bowlinggenius.com/)
+
+  ![](./img/bowling.jpg "Bowling Game 2")
+
   Contexte:
     Etant donnée une nouvelle partie de bowling
 

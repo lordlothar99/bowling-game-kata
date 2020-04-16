@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -13,6 +13,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <living.doc.directory>./target/doc-site/</living.doc.directory>
     </properties>
 
     <dependencies>
@@ -50,4 +51,77 @@
             <version>4.0.42</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Pickles : http://docs.picklesdoc.com/ -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <executions>
+                    <execution>
+                        <id>execute-pickles</id>
+                        <phase>site</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <workingDirectory>${project.basedir}</workingDirectory>
+                            <executable>${project.basedir}/doc/lib/Pickles-2.20.1/Pickles.exe</executable>
+                            <arguments>
+                                <argument>--feature-directory=${project.basedir}/src/test/resources/</argument>
+                                <argument>--output-directory=${living.doc.directory}</argument>
+                                <argument>--link-results-file=${project.build.directory}/cucumber/cucumber-report.json
+                                </argument>
+                                <argument>--test-results-format=cucumberjson</argument>
+                                <argument>--language=fr</argument>
+                                <argument>--documentation-format=dhtml</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- copy documentation resources to cucumber folder -->
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-living-documentation-resources</id>
+                        <phase>site</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${living.doc.directory}/img</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.basedir}/doc/img</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>3.9.0</version>
+                    <!-- disable site generation -->
+                    <configuration>
+                        <skip>true</skip>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-project-info-reports-plugin</artifactId>
+                    <version>3.0.0</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>
