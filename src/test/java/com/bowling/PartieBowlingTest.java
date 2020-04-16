@@ -6,7 +6,8 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = { "pretty", "html:target/cucumber-reports"  }
+        strict = true,
+        plugin = { "pretty", "html:target/cucumber-reports", "de.monochromata.cucumber.report.PrettyReports:target/cucumber" }
 )
 public class PartieBowlingTest {
 
