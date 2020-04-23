@@ -1,4 +1,4 @@
-Bowling Game kata [![Build Status](https://travis-ci.org/lordlothar99/bowling-game-aviva.svg?branch=cucumber)](https://travis-ci.org/lordlothar99/bowling-game-aviva)
+Bowling Game kata [![Build Status](https://travis-ci.org/lordlothar99/bowling-game-kata.svg?branch=cucumber)](https://travis-ci.org/lordlothar99/bowling-game-kata)
 ==================
 
 The game consists of 10 frames as shown above.  In each frame the player has
