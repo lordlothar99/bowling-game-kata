@@ -1,6 +1,6 @@
-  +---
-  +language: java
-    +
-  +script: mvn test
-    +
-  +sudo: false
+---
+language: java
+
+script: mvn test
+
+sudo: false
